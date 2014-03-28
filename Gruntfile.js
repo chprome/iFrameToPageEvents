@@ -3,17 +3,6 @@ function requireDeps(grunt) {
 }
 
 function initConfig(grunt) {
-
-    grunt.config('parallel', {
-        main: {
-            options: {
-                stream: true,
-                grunt: true
-            },
-            tasks: ['connect:main', 'connect:other']
-        }
-    });
-
     grunt.config('connect', {
         main: {
             options: {
@@ -22,20 +11,12 @@ function initConfig(grunt) {
                 hostname: '*',
                 keepalive: true
             }
-        },
-        other: {
-            options: {
-                base: './other',
-                port: 9001,
-                hostname: '*',
-                keepalive: true
-            }
         }
     });
 }
 
 function registerTasks(grunt) {
-    grunt.registerTask('default', ['parallel']);
+    grunt.registerTask('default', ['connect']);
 }
 
 module.exports = function(grunt) {
